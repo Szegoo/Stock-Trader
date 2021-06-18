@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Order, Shares } from '../interfaces/interfaces';
 import { ContractABI } from '../truffle/ABI';
 import Web3 from 'web3';
-import { NextPageContext } from 'next';
 declare let window: any;
 interface MyState {
 	order: Order,
@@ -22,7 +21,11 @@ const enableMetamask = async (id): Promise<MyState> => {
 		order
 	}
 }
-export default class OrderComponent extends React.Component<{ id: number }, MyState> {
+export default class OrderComponent extends React.Component<{ id: number }> {
+	state = {
+		order: {},
+		shares: 0
+	}
 	static async getInitialProps({ req, res, query }) {
 		console.log(query.id);
 
@@ -60,6 +63,7 @@ export default class OrderComponent extends React.Component<{ id: number }, MySt
 		})
 	}
 	render() {
+		console.log(this.state);
 		const { order, shares } = this.state;
 		return (
 			<div>
