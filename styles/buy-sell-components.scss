@@ -1,0 +1,33 @@
+.grid {
+	margin: 0 10vw;
+	display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.box {
+  display: block;
+  text-align: center;
+  background-color: white;
+  padding: 0em 1em 1em 1em;
+  box-shadow: 5px 5px 20px #21325b;
+  margin: 1em;
+}
+.box > *{
+  display: block;
+  text-align: center;
+}
+.box > h2 {
+  font-size: 1.3em;
+}
+.eth-stt input{
+  text-align: center;
+  display: block;
+  margin: 1em auto;
+  width: 80%;
+}
+.eth-stt > p > button {
+  padding: .5em 1em;
+  color: white;
+  background-color: #21325b;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+@import "./buy-sell-components.scss";
+@import "./order.scss";
+@import "./variables.scss";
+@import "./nav-bar.scss";
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    color: $blue-color;
+    .navigation-bar {
+        border: 1px solid $blue-color;
+    }
+}

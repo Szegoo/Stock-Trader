@@ -1,0 +1,35 @@
+@import './variables.scss';
+.orders-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	grid-gap: 1em;
+	margin: 1em 10vw;
+	.order {
+
+		padding: 1em;
+		border: 1px solid $blue-color;
+		cursor: pointer;
+		> * {
+			margin: .4em;
+		}
+	}
+}
+.order-window {
+	margin: 0 20vw;
+	border-left: 1px solid $blue-color;
+	border-right: 1px solid $blue-color;
+	padding: 1em;
+	padding-bottom: 0;
+	> button {
+		margin-top: 2em;
+		margin-bottom: 0;
+		padding: .5em 1em;
+		color: white;
+		background-color: $blue-color;
+		border: none;
+		cursor: pointer;
+		&:hover {
+			background-color: #a2325b;
+		}
+	}
+}
