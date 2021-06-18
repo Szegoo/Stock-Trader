@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import Order from "./Buy-Sell-Component";
 import BigNumber from "big-number";
-import ContractABI from '../truffle/ABI';
+import { ContractABI } from '../truffle/ABI';
 const web3 = new Web3(Web3.givenProvider);
 const contractAddr = '0xdB30697a0ED2bb87e1717f4401731700edbA681F';
 declare let window: any;

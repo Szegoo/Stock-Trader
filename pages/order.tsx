@@ -1,7 +1,7 @@
 import Header from '../preact/navigation-bar';
 import React, { useEffect } from 'react';
 import { Order, Shares } from '../interfaces/interfaces';
-import ContractABI from '../truffle/ABI';
+import { ContractABI } from '../truffle/ABI';
 import Web3 from 'web3';
 import { NextPageContext } from 'next';
 declare let window: any;

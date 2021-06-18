@@ -1,4 +1,6 @@
-export default [
+import { AbiItem } from "web3-utils";
+
+export const ContractABI: AbiItem[] = [
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",

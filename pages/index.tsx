@@ -1,11 +1,9 @@
 import Header from '../preact/navigation-bar';
 import HeroImage from '../preact/heroImage';
-import { useDispatch } from 'react-redux';
-import { setOrders } from '../redux/orders';
 import { Order, Shares } from '../interfaces/interfaces';
 import Web3 from 'web3';
 import React from 'react';
-import ContractABI from '../truffle/ABI';
+import { ContractABI } from '../truffle/ABI';
 import { Main } from '../components/Main';
 import OrderBuy from '../components/Buy-Sell-Container';
 interface MyState {
@@ -36,31 +34,17 @@ const enableMetamask = async (): Promise<MyState> => {
         }
     })
 }
-export default function Wrapper() {
-    const dispatch = useDispatch();
-    const onData = (data: MyState): void => {
-        dispatch(setOrders(data.orders));
-    }
-    return (
-        <Index onData={onData} />
-    )
-}
-interface Props {
-    onData: void;
-}
-class Index extends React.Component<Props, MyState>{
+export default class Index extends React.Component<{}, MyState>{
     state = {
         shares: 0,
         orders: []
     }
     componentDidMount() {
-        const { onData } = this.props;
         enableMetamask().then(data => {
             this.setState({
                 shares: data.shares,
                 orders: data.orders
             });
-            onData(data.orders, data.shares)
         })
     }
     render() {
