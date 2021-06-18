@@ -22,6 +22,10 @@ const enableMetamask = async (id): Promise<MyState> => {
 	}
 }
 export default class OrderComponent extends React.Component<{ id: number }, MyState> {
+	state: MyState = {
+		order: { amount: 0, from: "", orderType: "0", price: 0 },
+		shares: 0
+	}
 	static async getInitialProps({ req, res, query }) {
 		console.log(query.id);
 
