@@ -9,9 +9,9 @@ const OrderBuy = async (price, eth) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
     const value = BigNumber(parseFloat(eth) * Math.pow(10, 18));
-
+    price = BigNumber(price * Math.pow(10, 18)).toString();
     const Market = new web3.eth.Contract(ContractABI, contractAddr, { from: account });
-    await Market.methods.OrderBuy(BigNumber(price * Math.pow(10, 18))).send({
+    await Market.methods.OrderBuy(price).send({
         from: account,
         value: value.toString()
     });
@@ -20,9 +20,10 @@ const OrderSell = async (amount, price) => {
     const accounts = await window.ethereum.enable();
     const account = accounts[0];
     console.log('amount: ' + amount + "price: " + price)
+    price = BigNumber(price * Math.pow(10, 18)).toString();
 
     const Market = new web3.eth.Contract(ContractABI, contractAddr, { from: account });
-    await Market.methods.OrderSell(BigNumber(price * Math.pow(10, 18)), amount).send({
+    await Market.methods.OrderSell(price, amount).send({
         from: account
     });
 }
