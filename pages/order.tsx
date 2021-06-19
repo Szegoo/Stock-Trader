@@ -1,8 +1,15 @@
 import Header from '../preact/navigation-bar';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Order, Shares } from '../interfaces/interfaces';
 import { ContractABI } from '../truffle/ABI';
+import { connect } from 'react-redux';
 import Web3 from 'web3';
+
+const mapStateToProps = state => {
+	const { language } = state.language || {};
+	return { language };
+}
+
 declare let window: any;
 interface MyState {
 	order: Order,
@@ -21,7 +28,18 @@ const enableMetamask = async (id): Promise<MyState> => {
 		order
 	}
 }
-export default class OrderComponent extends React.Component<{ id: number }, MyState> {
+interface ReduxState {
+	language: {
+		language: boolean
+	}
+}
+class OrderComponent extends React.Component<{
+	id: number, data: {
+		language: {
+			language: boolean
+		}
+	}
+}, MyState> {
 	state: MyState = {
 		order: { amount: 0, from: "", orderType: "0", price: 0 },
 		shares: 0
@@ -63,19 +81,29 @@ export default class OrderComponent extends React.Component<{ id: number }, MySt
 		})
 	}
 	render() {
-		console.log(this.state);
+		let { language } = this.props.data.language;
+		console.log(language);
 		const { order, shares } = this.state;
 		return (
 			<div>
-				<Header balance={0} backgroundColor="white" color="#21325b" />
+				<Header balance={shares} backgroundColor="white" color="#21325b" />
 				<div className="order-window">
 					<h2>{order.price * Math.pow(10, -18)}ETH</h2>
-					<h3>Type: {order.orderType == "1" ? "Buy" : "Sell"}</h3>
-					<h2>Ammount: {order.amount}</h2>
-					<h4>Order Creator: {(order.from)}</h4>
-					<button onClick={this.fillOrder}>Fill in the order</button>
+					<h3>{language ? "Tip Porudžbine" : "Order Type"}: {order.orderType == "1" ?
+						[language ? "Prodaje" : "Selling"] :
+						[language ? "Kupuje" : "Buying"]}</h3>
+					<h2>{language ? "Broj deonica" : "Number of shares"}: {order.amount}</h2>
+					<h4>{language ? "Kreator porudžbine" : "Order Creator"}: {(order.from)}</h4>
+					<button onClick={this.fillOrder}>
+						{order.orderType == "1" ?
+							[language ? "Kupi deonice" : "Buy shares"]
+							:
+							[language ? "Prodaj deonice" : "Sell shares"]
+						}
+					</button>
 				</div>
 			</div>
 		)
 	}
 }
+export default connect(state => ({ data: state }))(OrderComponent);
