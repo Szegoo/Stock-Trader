@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { OrderComponent } from "./OrderComponent"
+import { useSelector } from "react-redux";
+import { ReduxState } from '../redux/orders';
 export const Main = ({ orders }) => {
+    const language = useSelector<ReduxState>(state => state.language.language);
     //if 0 -> buy if 1 -> sell if 2 -> choose
     const [option, setOption] = useState(2);
     const renderComponent = (userOption) => {
@@ -8,10 +11,16 @@ export const Main = ({ orders }) => {
             case 2:
                 return (
                     <div className="choose">
-                        <h2>Da li hoces da:</h2>
-                        <button onClick={() => setOption(0)}>Kupis</button>
-                        <p>ili da</p>
-                        <button onClick={() => setOption(1)}>Prodas</button>
+                        <h2>{language ? "Da li hoces da" : "Do you want to"}:</h2>
+                        <button onClick={() => setOption(0)}>
+                            {language ? "Kupis" : "Buy"}
+                        </button>
+                        <p>{
+                            language ? "ili da" : "or"
+                        }</p>
+                        <button onClick={() => setOption(1)}>{
+                            language ? "Prodas" : "Sell"
+                        }</button>
                     </div>
                 )
             case 0:

@@ -11,5 +11,10 @@ export const languageSlice = createSlice({
 		}
 	}
 })
+export interface ReduxState {
+	language: {
+		language: boolean;
+	}
+}
 export const { setLanguage } = languageSlice.actions;
 export default languageSlice.reducer;
