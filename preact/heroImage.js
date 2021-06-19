@@ -1,7 +1,9 @@
+import { useSelector } from "react-redux";
 export default ({ src }) => {
+    const { language } = useSelector(state => state.language);
     return (
         <div>
-            <h1 id="hero-text">Everything is possible.</h1>
+            <h1 id="hero-text">{language ? "Sve je moguce." : "Everything is possible."}</h1>
             <style>
                 {`
                 #hero-text {

@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLanguage } from '../redux/orders';
 export default ({ backgroundColor, color, balance }) => {
-    const [isOpen, setOpen] = useState(false)
+    const [isOpen, setOpen] = useState(false);
+    const { language } = useSelector(state => state.language);
+    const blueColor = "#21325b";
+    const redColor = "#a2325b";
     const toggleOpen = () => {
         setOpen(currentState => !currentState);
+    }
+    const dispatch = useDispatch();
+    const handleLanguageChange = (isSRB) => {
+        dispatch(setLanguage(isSRB));
     }
     return (
         <div className="nav">
             <ul className="navigation-bar">
                 <h1>Stock Trader</h1>
-                <li><a href="/">Home</a></li>
-                <li><a href="/get-started">Get Started</a></li>
-                <li><a href="/donate">{balance} Shares</a></li>
-                <li className="special"><a href="/about-us">About us</a></li>
+                <li><a href="/">{language ? "Početna Stranica" : "Home"}</a></li>
+                <li><a href="/get-started">{language ? "Kreni odavde" : "Get Started"}</a></li>
+                <li><a href="/donate">{balance} {language ? "deonica" : "shares"}</a></li>
+                <li className="special">
+                    <span style={{ color: [language ? redColor : blueColor] }} onClick={() => { handleLanguageChange(true) }} className="lang">SRB</span>
+                    <span>/</span>
+                    <span style={{ color: [language ? blueColor : redColor] }} onClick={() => { handleLanguageChange(false) }} className="lang">ENG</span>
+                </li>
             </ul>
             <div className="navigation-bar-mobile">
                 <div onClick={toggleOpen} className="navigation-toggle"></div>

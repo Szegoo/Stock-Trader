@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const ordersSlice = createSlice({
-	name: "orders",
+export const languageSlice = createSlice({
+	name: "language",
 	initialState: {
-		orders: []
+		language: true
 	},
 	reducers: {
-		setOrders: (state, actions) => {
-			state.orders = actions.payload;
+		setLanguage: (state, actions) => {
+			state.language = actions.payload;
 		}
 	}
 })
-export const { setOrders } = ordersSlice.actions;
-export default ordersSlice.reducer;
+export const { setLanguage } = languageSlice.actions;
+export default languageSlice.reducer;

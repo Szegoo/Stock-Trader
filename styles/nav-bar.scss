@@ -3,16 +3,16 @@
 	border-bottom: 1px solid $blue-color;
 	>ul {
         animation: move-in .5s ease-out;
-		background-color: hsl(222, 20%, 15%);
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		list-style: none;
-		margin: 0;
-		color: white;
-		text-align: center;
-		padding: 0;
+        background-color: hsl(222, 20%, 15%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        list-style: none;
+        margin: 0;
+        color: white;
+        text-align: center;
+        padding: 0;
 		>li {
 			margin: .5em;
 			color: white;
@@ -24,6 +24,15 @@
 			}
 		}
 	}
+}
+.special {
+    >.lang {
+        margin: 0 .5em;
+        cursor: pointer;
+        &:hover {
+            color: $red-color
+        }
+    }
 }
 @keyframes move-in {
         0% {

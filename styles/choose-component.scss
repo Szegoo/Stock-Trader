@@ -1,0 +1,24 @@
+@import "./variables.scss";
+.choose {
+	text-align: center;
+	margin: 0 20vw;
+	>h2 {
+		font-weight: 200;
+		font-size: 36px;
+	}
+	>button {
+		padding: .3em 1.2em;
+		margin: 1em;
+		border: none;
+		font-size: 16px;
+		background-color: $blue-color;
+		color: white;
+		cursor: pointer;
+		&:hover {
+			background-color: $red-color;
+		}
+	}
+	>p {
+		font-size: 20px;
+	}
+}

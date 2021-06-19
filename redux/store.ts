@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import ordersSlice from './orders';
+import languageSlice from './orders';
 
 export default configureStore({
     reducer: {
-        orders: ordersSlice
+        language: languageSlice
     }
 })
